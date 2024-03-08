@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+canvas {
+  width: 640px;
+  min-width: 640px
+}
+
+.canvas-box {
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.face-info {
+  margin-left: 40px;
+}

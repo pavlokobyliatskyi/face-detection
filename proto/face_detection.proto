@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package face_detection;
+
+service FaceDetectionService {
+  rpc DetectFaces (DetectFacesRequest) returns (DetectFacesResponseArray);
+}
+
+message DetectFacesRequest {
+  bytes data = 1;
+}
+
+message Emotion {
+  float angry = 1;
+  float disgust = 2;
+  float fear = 3;
+  float happy = 4;
+  float sad = 5;
+  float surprise = 6;
+  float neutral = 7;
+}
+
+message Region {
+  float x = 1;
+  float y = 2;
+  float w = 3;
+  float h = 4;
+  repeated float left_eye = 5;
+  repeated float right_eye = 6;
+}
+
+message Gender {
+  float Woman = 1;
+  float Man = 2;
+}
+
+message Race {
+  map<string, float> races = 1;
+}
+
+message DetectFacesResponse {
+  Emotion emotion = 1;
+  string dominant_emotion = 2;
+  Region region = 3;
+  float face_confidence = 4;
+  float age = 5;
+  Gender gender = 6;
+  string dominant_gender = 7;
+  Race race = 8;
+  string dominant_race = 9;
+}
+
+message DetectFacesResponseArray {
+  repeated DetectFacesResponse responses = 1;
+}
